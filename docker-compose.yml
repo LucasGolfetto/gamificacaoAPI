@@ -1,0 +1,16 @@
+version: '3'
+services:
+  database:
+    build: ./Database
+    container_name: database
+    restart: always
+    ports:
+      - 3307:3306
+  webapi:
+    build: ./Server
+    container_name: webapi
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - database
